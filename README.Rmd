@@ -57,3 +57,8 @@ library(simplr)
 ## basic example code
 getStats(airquality)
 ```
+
+```{r example2}
+# example with factors
+getStats(as.data.frame(datasets::Titanic))
+```

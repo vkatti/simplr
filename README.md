@@ -58,3 +58,14 @@ getStats(airquality)
 #> Month            0 integer      5 to 9         5          -
 #> Day              0 integer     1 to 31        31          -
 ```
+
+``` r
+# example with factors
+getStats(as.data.frame(datasets::Titanic))
+#>          numMissing typeCol    range numUnique             uniqueVals
+#> Class             0  factor        -         4 1st | 2nd | 3rd | Crew
+#> Sex               0  factor        -         2          Male | Female
+#> Age               0  factor        -         2          Child | Adult
+#> Survived          0  factor        -         2               No | Yes
+#> Freq              0 numeric 0 to 670        22                      -
+```
