@@ -34,11 +34,10 @@
 #' #>  Survived          0  factor        -         2               No | Yes
 #' #>  Freq              0 numeric 0 to 670        22                      -
 #'
-#'
 getStats <- function(df, limit = getOption("simplr.getStats.limit", default = 5L)) {
   stopifnot("`df` is missing" = !missing(df))
   stopifnot("`df` must be a data.frame or tibble" = inherits(df, "data.frame"))
-  stopifnot("`limit` must be an integer." = inherits(limit,"integer"))
+  stopifnot("`limit` must be an integer." = inherits(limit, "integer"))
   data.frame(
     numMissing = colSums(is.na(df)),
     typeCol = sapply(df, class),
@@ -56,7 +55,9 @@ getStats <- function(df, limit = getOption("simplr.getStats.limit", default = 5L
     }),
     uniqueVals = sapply(df, function(x) {
       ifelse(inherits(x, c("factor", "character")) & length(unique(x)) <= limit,
-        paste(as.character(unique(x)), collapse = " | "),
+             ifelse(inherits(x, "factor"),
+                    paste(levels(x), collapse = " | "),
+                    paste(as.character(sort(unique(x))), collapse = " | ")),
         "-"
       )
     })

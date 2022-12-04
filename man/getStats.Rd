@@ -43,5 +43,4 @@ getStats(as.data.frame(datasets::Titanic))
 #>  Survived          0  factor        -         2               No | Yes
 #>  Freq              0 numeric 0 to 670        22                      -
 
-
 }
